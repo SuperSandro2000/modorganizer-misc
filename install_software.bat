@@ -67,7 +67,7 @@ if not exist "C:\Qt" (
 
 if not exist "%vs%" call :download "https://aka.ms/vs/15/release/vs_community.exe" %vs%
 echo Installing VisualStudio Community...
-%vs% --add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.ManagedDesktop -- dd Microsoft.Net.Component.4.6.TargetingPack --add Microsoft.Net.Component.4.5.TargetingPack --passive --norestart --wait
+%vs% --add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.Net.Component.4.6.TargetingPack --add Microsoft.Net.Component.4.5.TargetingPack --passive --norestart --wait
 
 echo Done Installing software.
 pause & exit /b
