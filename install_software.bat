@@ -31,7 +31,6 @@ if exist "C:\Qt" (
 :: set executable file names. URLs can change with every release and are simply changed in call: download
 set sevenzip=7z1801-x64.msi
 set cmake=cmake-3.10.2-win64-x64.msi
-set git=git-2.16.1.4-64-bit.exe
 set perl=strawberry-perl-5.26.1.1-64bit.msi
 set python=python-2.7.14.amd64.msi
 set qt=qt-unified-windows-x86-online.exe
@@ -48,29 +47,6 @@ echo Installing 7zip...
 if not exist "%cmake%" call :download "https://cmake.org/files/v3.10/%cmake%" %cmake%
 echo Installing CMake...
 %cmake% /passive ADD_CMAKE_TO_PATH=System ALLUSERS=1
-
-if not exist "%git%" call :download "https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.4/%git%" %git%
-if not exist %wdir%\git.inf (
-	echo [Setup]
-	echo Lang=default
-	echo Dir=C:\Program Files\Git
-	echo Group=Git
-	echo NoIcons=1
-	echo SetupType=default
-	echo Components=gitlfs,assoc,assoc_sh,autoupdate
-	echo Tasks=
-	echo EditorOption=Nano
-	echo PathOption=Cmd
-	echo SSHOption=OpenSSH
-	echo CURLOption=OpenSSL
-	echo CRLFOption=CRLFAlways
-	echo BashTerminalOption=MinTTY
-	echo PerformanceTweaksFSCache=Enabled
-	echo UseCredentialManager=Enabled
-	echo EnableSymlinks=Disabled
-) >> %wdir%/scripts/git.inf
-echo Installing Git...
-%git% /LOADINF=%wdir%/git.inf /SILENT
 
 if not exist "%perl%" call :download "http://strawberryperl.com/download/5.26.1.1/%perl%" %perl%
 echo Installing Strawberry Perl...
