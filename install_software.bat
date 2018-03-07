@@ -60,13 +60,13 @@ if not exist "C:\Qt" (
 	if not exist "%qt%" call :download "https://download.qt.io/official_releases/online_installers/%qt%" %qt%
 	echo Installing Qt...
 	:: | rem is a workaround to wait until Qt is done with installing
-	%qt% --script "%wdir%\scripts\qt.qs"|rem
+	%qt% --script "../qt.qs"|rem
 	:: rename a folder that keeps us from compiling
 	if exist "C:\Qt\5.10.0\msvc2017_64\include\QtNfc" ren C:\Qt\5.10.0\msvc2017_64\include\QtNfc QtNfc.disable
 )
 
 if not exist "%vs%" call :download "https://aka.ms/vs/15/release/vs_community.exe" %vs%
-echo Installing VisualStudio Community...			Microsoft.VisualStudio.Workload.ManagedDesktop
+echo Installing VisualStudio Community...
 %vs% --add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.ManagedDesktop -- dd Microsoft.Net.Component.4.6.TargetingPack --add Microsoft.Net.Component.4.5.TargetingPack --passive --norestart --wait
 
 echo Done Installing software.
